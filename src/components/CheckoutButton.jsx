@@ -85,6 +85,7 @@ function CheckoutButton() {
             for (let item of cartItems) {
                 const itemStockLevel = itemDataList.find(data => data.id === item.id);
                 if (itemStockLevel) {
+                    console.log(itemStockLevel)
                     const newStockLevel = itemStockLevel.quantity - item.quantity;
                     await axios.patch(`http://localhost:8082/item/update/${item.id}`, { quantity: newStockLevel });
                 }
